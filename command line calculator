@@ -1,0 +1,45 @@
+class calc{
+    public int add(int num1,int num2){
+        return num1 + num2 ;
+    }
+    public int subtract(int num1, int num2) {
+        return num1 - num2;
+    }
+    public int multiply(int num1, int num2){
+        return num1* num2;
+    }
+}
+public class CommandLineCalculator{
+    public static void main(String[] args) {
+        if (args.length != 3) {
+            System.out.println("three agruments are not provided");
+            return;
+        }
+
+        try {
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[2]);
+            String operator = args[1];
+            calc calculator = new calc();
+            int result;
+            switch (operator) {
+                case "+":
+                    result = calculator.add(num1, num2);
+                    break;
+                case "-":
+                    result = calculator.subtract(num1, num2);
+                    break;
+                case "*":
+                    result = calculator.multiply(num1, num2);
+                    break;
+                default:
+                    System.out.println("Error: Invalid operator. Supported operators are: +, -, *.");
+                    return;
+            }
+            System.out.println("Result: " + result);
+        }  
+        catch (NumberFormatException e){
+            System.out.println("Error: Please provide valid numbers.");
+        }
+    }        
+}    
